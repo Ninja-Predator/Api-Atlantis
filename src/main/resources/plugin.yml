@@ -1,0 +1,23 @@
+name: MinecraftModDemo
+main: com.shineyue.Main
+version: "1"
+author: wxd
+commands:
+  demo:
+    description: "设置op"
+    usage: "用法/demo"
+    permission: MinecraftModDemo.demo
+    permission-message: "没有权限"
+    aliases:
+        - d
+  demo2:
+  demo3:
+permissions:
+  MinecraftModDemo.*:
+    description: "mod命令权限"
+    default: op
+    children:
+      - MinecraftModDemo.demo
+
+  MinecraftModDemo.demo:
+    default: op
