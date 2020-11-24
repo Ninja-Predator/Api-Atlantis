@@ -13,12 +13,14 @@ public class PlayerSuperHeroListener implements Listener {
         if (e.getDamager().getType()== EntityType.PLAYER){
             if (((Player)e.getDamager()).getName().equals("M_Lizi")){
                 Player p=(Player)e.getDamager();
-                if (p.getItemInHand().getItemMeta().getLore().contains("§b巨人杀手")){
-                    e.setCancelled(true);
-                    LivingEntity livingEntity=(LivingEntity)e.getEntity();
-                    double v = livingEntity.getHealth();
-                    livingEntity.setHealth(v/2);
-                    p.sendMessage("§a你对"+e.getEntity().getName()+"造成了"+v/2+"的真实伤害");
+                if (p.getItemInHand().hasItemMeta()) {
+                    if (p.getItemInHand().getItemMeta().getLore().contains("§b巨人杀手")){
+                        LivingEntity livingEntity = (LivingEntity) e.getEntity();
+                        double v = livingEntity.getHealth();
+                        p.sendMessage("§a你造成了" + String.format("%.2f", v / 2) + "的真实伤害");
+                        livingEntity.setHealth(v / 2);
+                        livingEntity.setNoDamageTicks(300);
+                    }
                 }
             }
         }

@@ -34,7 +34,8 @@ public class Demo implements TabExecutor {
                 lore.add("§c它有它的主人");
                 meta.setLore(lore);
                 meta.setDisplayName("§b斩铁剑");
-                meta.addEnchant(Enchantment.DURABILITY,300,true);
+                item.setDurability((short) 1);
+                meta.addEnchant(Enchantment.PROTECTION_PROJECTILE,300,true);
                 item.setItemMeta(meta);
                 if (!player.getInventory().contains(item)){
                     player.getInventory().addItem(item);
