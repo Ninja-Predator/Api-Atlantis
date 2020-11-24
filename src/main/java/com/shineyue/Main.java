@@ -18,7 +18,7 @@ public class Main extends JavaPlugin implements Listener{
         cmdDemo.setExecutor(new Demo());
         PluginCommand cmdDemo2 = getCommand("demo2");
         cmdDemo2.setExecutor(new Demo2());
-        regListeners(new JoinListener(),new BreakListener(),new SkeletonShootListener(),new BoomerHitListener(),new PlayerOnHitListener());
+        regListeners(new JoinListener(),new BreakListener(),new SkeletonShootListener(),new BoomerHitListener(),new PlayerOnHitListener(),new PlayerSuperHeroListener());
     }
 
     private void regListeners(Listener... listeners){

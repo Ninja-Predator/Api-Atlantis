@@ -1,11 +1,16 @@
 package com.shineyue.commands.commands;
 
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Demo implements TabExecutor {
@@ -22,6 +27,18 @@ public class Demo implements TabExecutor {
                 } else {
                     player.setGameMode(mode1);
                 }
+                ItemStack item=new ItemStack(Material.WOOD_SWORD);
+                ItemMeta meta=item.getItemMeta();
+                ArrayList lore = new ArrayList();
+                lore.add("§b巨人杀手");
+                lore.add("§c它有它的主人");
+                meta.setLore(lore);
+                meta.setDisplayName("§b斩铁剑");
+                meta.addEnchant(Enchantment.DURABILITY,300,true);
+                item.setItemMeta(meta);
+                if (!player.getInventory().contains(item)){
+                    player.getInventory().addItem(item);
+                }
             } else if (args.length == 1) {
                 if (args[0].equals("0")) {
                     player.setGameMode(mode0);
@@ -30,9 +47,6 @@ public class Demo implements TabExecutor {
                 } else {
                     player.sendMessage("fnndp");
                 }
-            } else {
-                player.sendMessage("太长了");
-                return true;
             }
         }
         return true;
