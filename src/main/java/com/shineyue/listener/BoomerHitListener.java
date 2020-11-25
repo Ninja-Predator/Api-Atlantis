@@ -12,7 +12,7 @@ public class BoomerHitListener implements Listener {
     public void onHit(ProjectileHitEvent e){
         if (e.getEntity().hasMetadata("boom")){
             if (e.getEntity().getMetadata("boom").get(0).asBoolean()) {
-                e.getEntity().getWorld().strikeLightning(e.getEntity().getLocation());
+//                e.getEntity().getWorld().strikeLightning(e.getEntity().getLocation());
                 e.getEntity().remove();
             }
         }

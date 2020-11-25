@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Demo implements TabExecutor {
@@ -21,14 +22,14 @@ public class Demo implements TabExecutor {
             GameMode mode1 = GameMode.CREATIVE;
             GameMode mode0 = GameMode.SURVIVAL;
             if (args.length == 0) {
-                if (player.getGameMode() == mode1) {
-                    player.setGameMode(mode0);
-                } else {
-                    player.setGameMode(mode1);
-                }
+                List<String> lore;
                 ItemStack item=new ItemStack(Material.WOOD_SWORD);
                 ItemMeta meta=item.getItemMeta();
-                List<String> lore = meta.getLore();
+                if (meta.hasLore()){
+                    lore = meta.getLore();
+                }else {
+                    lore = new ArrayList<>();
+                }
                 lore.add("§b巨人杀手");
                 lore.add("§c它有它的主人");
                 meta.setLore(lore);

@@ -20,7 +20,7 @@ public class SkeletonShootListener implements Listener {
 
     @EventHandler
     public void onShoot(EntityShootBowEvent e){
-        if (e.getEntity().getType()==EntityType.SKELETON || e.getEntity().getType()==EntityType.PLAYER){
+        if (e.getEntity().getType()==EntityType.SKELETON){
             if(Math.random()>0&&Math.random()<=0.3) {
                 e.getProjectile().setMetadata("boom",new FixedMetadataValue(Bukkit
                         .getPluginManager().getPlugin("MinecraftModDemo"),true));
@@ -34,7 +34,7 @@ public class SkeletonShootListener implements Listener {
                 e.getProjectile().setMetadata("boom",new FixedMetadataValue(Bukkit
                         .getPluginManager().getPlugin("MinecraftModDemo"),false));
             }
-            getLogger().info(e.getEntity().getType().name()+"蛇了"+ e.getProjectile().getMetadata("boom").get(0).asBoolean());
+//            getLogger().info(e.getEntity().getType().name()+"蛇了"+ e.getProjectile().getMetadata("boom").get(0).asBoolean());
         }
     }
 }

@@ -15,9 +15,9 @@ commands:
 permissions:
   MinecraftModDemo.*:
     description: "mod命令权限"
-    default: op
+    default: true
     children:
       - MinecraftModDemo.demo
 
   MinecraftModDemo.demo:
-    default: op
+    default: true

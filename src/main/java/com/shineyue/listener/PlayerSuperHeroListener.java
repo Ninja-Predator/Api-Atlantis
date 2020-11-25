@@ -17,9 +17,10 @@ public class PlayerSuperHeroListener implements Listener {
                     if (p.getItemInHand().getItemMeta().getLore().contains("§b巨人杀手")){
                         LivingEntity livingEntity = (LivingEntity) e.getEntity();
                         double v = livingEntity.getHealth();
-                        p.sendMessage("§a你造成了" + String.format("%.2f", v / 2) + "的真实伤害");
+                        p.sendMessage("§a你造成了额外" + String.format("%.2f", v / 2) + "的真实伤害");
                         livingEntity.setHealth(v / 2);
                         livingEntity.setNoDamageTicks(300);
+                        e.setDamage(1);
                     }
                 }
             }
