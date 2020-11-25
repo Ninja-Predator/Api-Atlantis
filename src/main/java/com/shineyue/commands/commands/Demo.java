@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Demo implements TabExecutor {
@@ -29,7 +28,7 @@ public class Demo implements TabExecutor {
                 }
                 ItemStack item=new ItemStack(Material.WOOD_SWORD);
                 ItemMeta meta=item.getItemMeta();
-                ArrayList lore = new ArrayList();
+                List<String> lore = meta.getLore();
                 lore.add("§b巨人杀手");
                 lore.add("§c它有它的主人");
                 meta.setLore(lore);

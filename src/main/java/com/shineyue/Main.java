@@ -8,24 +8,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-
-public class Main extends JavaPlugin implements Listener{
+public class Main extends JavaPlugin implements Listener {
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         getLogger().info("加载成功");
-        PluginCommand cmdDemo=getCommand("demo");
+        PluginCommand cmdDemo = getCommand("demo");
         cmdDemo.setExecutor(new Demo());
         PluginCommand cmdDemo2 = getCommand("demo2");
         cmdDemo2.setExecutor(new Demo2());
-        regListeners(new JoinListener(),new BreakListener(),new SkeletonShootListener()
-                ,new BoomerHitListener(),new PlayerOnHitListener(),new PlayerSuperHeroListener()
-                ,new EntityDieListener());
+        regListeners(new JoinListener(), new BreakListener(), new SkeletonShootListener()
+                , new BoomerHitListener(), new PlayerOnHitListener(), new PlayerSuperHeroListener()
+                , new EntityDieListener(), new EntityResistanceListener());
     }
 
-    private void regListeners(Listener... listeners){
+    private void regListeners(Listener... listeners) {
         for (Listener listener : listeners) {
-            getServer().getPluginManager().registerEvents(listener,this);
+            getServer().getPluginManager().registerEvents(listener, this);
         }
     }
 

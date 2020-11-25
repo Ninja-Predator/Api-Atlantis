@@ -34,7 +34,7 @@ public class PlayerOnHitListener implements Listener {
                         .getPluginManager().getPlugin("MinecraftModDemo"),true));
             }else if (Math.random()>0.7 && e.getEntityType()== EntityType.PLAYER){
                 Player p = (Player)e.getEntity();
-                p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER,5,30));
+                p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER,120,30));
                 p.sendMessage("你感到一阵饥饿！");
             }else if (Math.random()>0.6 &&Math.random()<0.63 && e.getEntityType()== EntityType.PLAYER){
                 Player p = (Player)e.getEntity();
@@ -60,7 +60,7 @@ public class PlayerOnHitListener implements Listener {
             } else {
                 zVector = -sqrt;
             }
-            player.getWorld().createExplosion(player.getLocation(), 0.2f, true);
+            player.getWorld().createExplosion(player.getLocation(), 0.1f, true);
             Arrow spawnArrow = player.getWorld().spawnArrow(eyeLocation.add(xVector, 80, zVector),v, 0, 0);
             spawnArrow.setVelocity(v);
             spawnArrow.setCustomNameVisible(true);
