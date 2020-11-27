@@ -2,12 +2,10 @@ package com.shineyue.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -47,14 +45,18 @@ public class EntityDieListener implements Listener {
                 spawnEntity.setHealth(1000);
             }
         } else if (deadEntityType == EntityType.SKELETON) {
-            deadEntity.getWorld().spawnEntity(deadEntity.getLocation(), EntityType.SILVERFISH);
+            spawnEntity = (LivingEntity) deadEntity.getWorld().spawnEntity(deadEntity.getLocation(), EntityType.SILVERFISH);
+            spawnEntity.setMaxHealth(1);
+            spawnEntity.setHealth(1);
         } else if (friendlyAnimals.contains(deadEntityType)) {
-            if (Math.random() > 0.75) {
-                spawnEntity = (LivingEntity) deadEntity.getWorld().spawnEntity(deadEntity.getLocation(), EntityType.BLAZE);
-                spawnEntity.setMaxHealth(70);
-                spawnEntity.setHealth(70);
-                spawnEntity.setCustomName("复仇者");
-                spawnEntity.setCustomNameVisible(true);
+            if(e.getEntity().getLastDamageCause().getCause()==EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+                if (Math.random() > 0.85) {
+                    spawnEntity = (LivingEntity) deadEntity.getWorld().spawnEntity(deadEntity.getLocation(), EntityType.BLAZE);
+                    spawnEntity.setMaxHealth(15);
+                    spawnEntity.setHealth(15);
+                    spawnEntity.setCustomName("复仇者");
+                    spawnEntity.setCustomNameVisible(true);
+                }
             }
         } else if (deadEntityType == EntityType.SILVERFISH) {
             if (Math.random() > 0.75) {

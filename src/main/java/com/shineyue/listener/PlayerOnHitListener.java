@@ -53,7 +53,7 @@ public class PlayerOnHitListener implements Listener {
         double xVector, zVector;
         Random rand = new Random();
         Vector v = new Vector(0, -5, 0);
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 10; i++) {
             xVector = rand.nextDouble() * 2 - 1;
             double sqrt = sqrt(1 - Math.pow(xVector, 2));
             if (rand.nextBoolean()) {
@@ -62,10 +62,10 @@ public class PlayerOnHitListener implements Listener {
                 zVector = -sqrt;
             }
             player.getWorld().createExplosion(player.getLocation(), 0.1f, true);
-            Arrow spawnArrow = player.getWorld().spawnArrow(eyeLocation.add(xVector, 80, zVector), v, 0, 0);
+            Arrow spawnArrow = player.getWorld().spawnArrow(eyeLocation.add(xVector, 5, zVector), v, 0, 0);
             spawnArrow.setVelocity(v);
             spawnArrow.setCustomNameVisible(true);
-            eyeLocation.add(-xVector, -75, -zVector);
+            eyeLocation.add(-xVector, -4, -zVector);
         }
     }
 }
